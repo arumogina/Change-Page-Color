@@ -14,11 +14,13 @@ window["g_sm"].get(`except_all`,function(a){
         if(d_ary.includes(url_obj.origin)) return;
         //これでブラウザの画面の色変え
         window["g_sm"].get("text_color",function(t){
-          $("*").css("color",`#${t.text_color}`);
+          if(t.text_color) $("*").css("color",`#${t.text_color}`);
         });
         window["g_sm"].get("bg_color",function(t){
-          $("*").css("background-color",`#${t.bg_color}`);
-          //$("body").css({"cssText":`background-color: #${t.text_color} !important;`});
+          if(t.bg_color) $("*").css("background-color",`#${t.bg_color}`);
+        });
+        window["g_sm"].get("link_color",function(t){
+          if(t.link_color) $("a:link").css("color","#"+t.link_color);
         });
       });
     });

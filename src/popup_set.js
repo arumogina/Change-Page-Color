@@ -11,6 +11,11 @@ $(function(){
     $("#bg_color_input").css("background-color","#"+t.bg_color);
   });
 
+  window["g_sm"].get("link_color",function(t){
+    $("#link_color_input").val(t.link_color);
+    $("#link_color_input").css("background-color","#"+t.link_color);
+  });
+
   //url:url_obj.href
   //page:url_obj.origin+url_obj.pathname)
   //domain:url_obj.origin

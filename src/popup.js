@@ -11,6 +11,10 @@ $(function(){
     window["g_sm"].set({bg_color:$(this).val()});
   });
 
+  $("body").on("change","#link_color_input",function(){
+    window["g_sm"].set({link_color:$(this).val()});
+  });
+
   $("body").on("click","#url_btn",function(){
     chrome.tabs.getSelected(null,function(tab) {
       var tem = new URL(tab.url)
