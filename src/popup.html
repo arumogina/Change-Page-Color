@@ -5,9 +5,11 @@
   <link href="popup.css" rel="stylesheet">
   <script src="../vendor/jquery-3.2.1.min.js"></script>
   <script src="storage.js"></script>
+  <script src="../vendor/jscolor.js"></script>
+  <script src="popup_set.js"></script>
   <script src="popup.js"></script>
-  </head>
-<body>
+</head>
+<body style="width:240px;">
   <p>change&nbsp;page's&nbsp;color&nbsp;except</p>
   <button id="url_btn" class="pcc_btn"> this url</button>
   <p>domain+path+query</p>
@@ -19,4 +21,12 @@
   <p>actually uninstall</p>
   <hr/>
   <p id="debug"></p>
+  <hr/>
+  <p>Text Color</p>
+  <input class="jscolor" id="text_color_input">
+  <p>BG Color</p>
+  <input class="jscolor" id="bg_color_input">
+
+
+
 </body>

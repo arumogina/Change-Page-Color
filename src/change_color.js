@@ -13,7 +13,13 @@ window["g_sm"].get(`except_all`,function(a){
         if(p_ary.includes(url_obj.origin+url_obj.pathname)) return;
         if(d_ary.includes(url_obj.origin)) return;
         //これでブラウザの画面の色変え
-        document.body.style.backgroundColor = 'orange';
+        window["g_sm"].get("text_color",function(t){
+          $("*").css("color",`#${t.text_color}`);
+        });
+        window["g_sm"].get("bg_color",function(t){
+          $("*").css("background-color",`#${t.bg_color}`);
+          //$("body").css({"cssText":`background-color: #${t.text_color} !important;`});
+        });
       });
     });
   });
