@@ -1,4 +1,4 @@
-g_storage_methods = (function(){
+var g_storage_methods = (function(){
   return {
     get:function(key,callback){
       chrome.storage.local.get(key,callback);
@@ -12,7 +12,7 @@ g_storage_methods = (function(){
   }
 })();
 
-g_sm = g_storage_methods;
+var g_sm = g_storage_methods;
 
 /*  usage
 非同期処理のため、getした値を入力するなどの処理はcallback内で行う

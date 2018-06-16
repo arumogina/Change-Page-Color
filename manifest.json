@@ -9,15 +9,13 @@
   "content_scripts":[
     {
       "matches":["https://*/*","http://*/*"],
-      "js":["vendor/jquery-3.2.1.min.js",
-            "src/storage.js",
-            "src/change_color.js",
-            "src/popup.js"
-          ]
+      "js":[
+        "vendor/jquery-3.2.1.min.js",
+        "src/storage.js",
+        "src/change_color.js"]
     }
   ],
   "permissions": [
-    "activeTab",
     "tabs",
     "storage"
   ]
