@@ -43,6 +43,15 @@ $(function(){
     });
   });
 
+  $("body").on("click","#all_btn",function(){
+    window["g_sm"].get("except_all",function(d){
+      var tem = d.except_all || false;
+      var h = {};
+      h["except_all"] = !tem;
+      window["g_sm"].set(h);
+    });
+  });
+
   function save_url(type,url){
     window["g_sm"].get(type,function(d){
       u_ary = d[type] || [];
@@ -52,10 +61,11 @@ $(function(){
       }else{
         u_ary.push(url);
       }
-      h = {};
+      var h = {};
       h[type] = u_ary;
       window["g_sm"].set(h);
     });
+    $("#debug").text("OK! If not change,refresh page.")
   }
 
 });
