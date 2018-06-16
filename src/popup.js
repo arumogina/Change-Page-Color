@@ -2,7 +2,7 @@ $(function(){
   //url:url_obj.href
   //page:url_obj.origin+url_obj.pathname)
   //domain:url_obj.origin
-
+  //ポップアップを開いたとき,クリック済みのURLのボタンの色を変える処理
   $.each(["url","page","domain"],function(_,tar){
     window["g_sm"].get(`except_${tar}`,function(d){
       chrome.tabs.getSelected(null,function(tab) {
@@ -19,6 +19,10 @@ $(function(){
         }
       });
     })
+  });
+
+  window["g_sm"].get(`except_all`,function(d){
+    if(d.except_all) $("#all_btn").addClass("pcc_clicked_btn");
   });
 
 
@@ -49,6 +53,7 @@ $(function(){
       var h = {};
       h["except_all"] = !tem;
       window["g_sm"].set(h);
+      $("#debug").text("OK! If not change,refresh page.")
     });
   });
 
