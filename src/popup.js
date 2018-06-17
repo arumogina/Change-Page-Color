@@ -6,6 +6,9 @@ $(function(){
     });
   }
 
+  //動的要素に色が反映されない対策としてとりあえず、ポップアップを開いたら色を反映するようにしてみる
+  req_change_color();
+
   //url:url_obj.href
   //page:url_obj.origin+url_obj.pathname)
   //domain:url_obj.origin

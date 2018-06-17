@@ -1,7 +1,5 @@
 //ポップアップを開いたときに実行される初期化処理
 $(function(){
-  //動的要素に色が反映されない対策としてとりあえず、ポップアップを開いたら色を反映するようにしてみる
-  req_change_color();
 
   window["g_sm"].get("text_color",function(t){
     $("#text_color_input").val(t.text_color);
@@ -43,5 +41,7 @@ $(function(){
   window["g_sm"].get(`except_all`,function(d){
     if(d.except_all) $("#all_btn").addClass("pcc_clicked_btn");
   });
+
+  
 
 });
