@@ -1,3 +1,13 @@
+//メッセージリスナー
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.name == "change_color"){
+    change_color();
+  }
+});
+
+
+function change_color(){
+
 window["g_sm"].get(`except_all`,function(a){
   if(a.except_all) return;
   var is_color = true;
@@ -17,7 +27,11 @@ window["g_sm"].get(`except_all`,function(a){
           if(t.text_color) $("*").css("color",`#${t.text_color}`);
         });
         window["g_sm"].get("bg_color",function(t){
-          if(t.bg_color) $("*").css("background-color",`#${t.bg_color}`);
+          if(t.bg_color){
+             $("*").css("background-color",`#${t.bg_color}`);
+             $("div").css("background-color",`#${t.bg_color}`);
+             $("li").css("background-color",`#${t.bg_color}`);
+           }
         });
         window["g_sm"].get("link_color",function(t){
           if(t.link_color) $("a:link").css("color","#"+t.link_color);
@@ -25,5 +39,7 @@ window["g_sm"].get(`except_all`,function(a){
       });
     });
   });
-
 });
+}
+//ページ移動時に実行
+change_color();

@@ -1,48 +1,67 @@
 $(function(){
+  //content_scriptsのchange_color.jsに色を変えるように指令
+  function req_change_color(){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {name: "change_color"}, function(response) {});
+    });
+  }
+
   //url:url_obj.href
   //page:url_obj.origin+url_obj.pathname)
   //domain:url_obj.origin
 
   $("body").on("change","#text_color_input",function(){
     window["g_sm"].set({text_color:$(this).val()});
+    req_change_color();
   });
 
   $("body").on("change","#bg_color_input",function(){
     window["g_sm"].set({bg_color:$(this).val()});
+    req_change_color();
   });
 
   $("body").on("change","#link_color_input",function(){
     window["g_sm"].set({link_color:$(this).val()});
+    req_change_color();
   });
 
   $("body").on("click","#url_btn",function(){
+    $(this).toggleClass("pcc_clicked_btn");
     chrome.tabs.getSelected(null,function(tab) {
       var tem = new URL(tab.url)
       save_url("except_url",tem.href);
+      req_change_color();
     });
+
   });
 
   $("body").on("click","#page_btn",function(){
+    $(this).toggleClass("pcc_clicked_btn");
     chrome.tabs.getSelected(null,function(tab) {
       var tem = new URL(tab.url)
       save_url("except_page",tem.origin+tem.pathname);
+      req_change_color();
     });
   });
 
   $("body").on("click","#domain_btn",function(){
+    $(this).toggleClass("pcc_clicked_btn");
     chrome.tabs.getSelected(null,function(tab) {
       var tem = new URL(tab.url)
       save_url("except_domain",tem.origin);
+      req_change_color();
     });
   });
 
   $("body").on("click","#all_btn",function(){
+    $(this).toggleClass("pcc_clicked_btn");
     window["g_sm"].get("except_all",function(d){
       var tem = d.except_all || false;
       var h = {};
       h["except_all"] = !tem;
       window["g_sm"].set(h);
-      $("#debug").text("OK! If not change,refresh page.")
+      $("#debug").text("If not change,refresh page")
+      req_change_color();
     });
   });
 
@@ -58,8 +77,9 @@ $(function(){
       var h = {};
       h[type] = u_ary;
       window["g_sm"].set(h);
+      req_change_color();
     });
-    $("#debug").text("OK! If not change,refresh page.")
+    $("#debug").text("If not change,Refresh Page")
   }
 
 });
