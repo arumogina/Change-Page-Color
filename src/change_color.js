@@ -45,4 +45,11 @@ $(function(){
     }
   });
 
+  //DOMの変更を検知、追加要素に色を反映する
+  var observer = new MutationObserver(function (MutationRecords, MutationObserver) {
+    change_color();
+  });
+
+  observer.observe($("body").get(0), {childList:true,subtree:true});
+
 });
