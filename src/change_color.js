@@ -1,10 +1,3 @@
-//メッセージリスナー
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.name == "change_color"){
-    change_color();
-  }
-});
-
 
 function change_color(){
 
@@ -41,5 +34,15 @@ window["g_sm"].get(`except_all`,function(a){
   });
 });
 }
-//ページ移動時に実行
-change_color();
+
+$(function(){
+  //ページ移動時に実行
+  change_color();
+  //メッセージリスナー
+  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.name == "change_color"){
+      change_color();
+    }
+  });
+
+});
